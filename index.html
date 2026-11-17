@@ -545,7 +545,70 @@
     [data-theme="light"] .mobile-menu {
       background: rgba(255, 255, 255, 0.98);
     }
-
+    [data-theme="light"] .mobile-menu-header {
+      background: rgba(248, 250, 252, 0.95);
+      border-bottom-color: #e2e8f0;
+    }
+    [data-theme="light"] .mobile-brand-title {
+      color: #0f172a !important;
+    }
+    [data-theme="light"] .mobile-brand-subtitle {
+      color: #64748b !important;
+    }
+    [data-theme="light"] .mobile-close-btn {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+      color: #0f172a !important;
+    }
+    [data-theme="light"] .mobile-close-btn:hover {
+      background: #e2e8f0;
+      color: #0d9488 !important;
+    }
+    [data-theme="light"] .mobile-status-pill {
+      background: #f0fdf4;
+      border-color: #bbf7d0;
+      color: #15803d !important;
+    }
+    [data-theme="light"] .mobile-nav-item {
+      background: #ffffff;
+      border-color: #e2e8f0;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+    }
+    [data-theme="light"] .mobile-nav-item:hover,
+    [data-theme="light"] .mobile-nav-item:active {
+      background: #f8fafc;
+      border-color: #0d9488;
+    }
+    [data-theme="light"] .mobile-nav-title {
+      color: #0f172a !important;
+    }
+    [data-theme="light"] .mobile-nav-desc {
+      color: #64748b !important;
+    }
+    [data-theme="light"] .mobile-nav-arrow {
+      color: #94a3b8;
+    }
+    [data-theme="light"] .mobile-menu-footer {
+      border-top-color: #e2e8f0;
+    }
+    [data-theme="light"] .mobile-quick-btn.btn-call {
+      background: #ffffff;
+      border-color: #cbd5e1;
+      color: #0f172a !important;
+    }
+    [data-theme="light"] .mobile-quick-btn.btn-call:hover {
+      background: #f1f5f9;
+      color: #0d9488 !important;
+    }
+    [data-theme="light"] .mobile-contact-meta {
+      color: #64748b !important;
+    }
+    [data-theme="light"] .mobile-contact-meta a {
+      color: #475569 !important;
+    }
+    [data-theme="light"] .mobile-contact-meta a:hover {
+      color: #0d9488 !important;
+    }
     [data-theme="light"] .mobile-link {
       color: #0f172a !important;
     }
@@ -1306,48 +1369,317 @@
       transform: translateY(-8.5px) rotate(-45deg);
     }
 
-    /* Mobile Drawer */
+    /* ==========================================================================
+       MODERN APP-STYLE MOBILE MENU DRAWER
+       ========================================================================== */
     .mobile-menu {
       position: fixed;
-      top: 0;
-      left: 0;
+      inset: 0;
       width: 100%;
       height: 100vh;
-      background: rgba(0, 0, 0, 0.98);
+      height: 100dvh;
+      background: rgba(8, 8, 8, 0.96);
       backdrop-filter: blur(28px);
       -webkit-backdrop-filter: blur(28px);
-      z-index: 1001;
+      z-index: 2000;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      padding: 3rem 2rem;
-      transform: translateY(-100%);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
+      opacity: 0;
       visibility: hidden;
+      pointer-events: none;
+      transform: translateY(-16px) scale(0.98);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .mobile-menu.open {
-      transform: translateY(0);
+      opacity: 1;
       visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
     }
 
-    .mobile-links {
+    /* Mobile Drawer Header */
+    .mobile-menu-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(14, 14, 14, 0.6);
+      flex-shrink: 0;
+    }
+
+    .mobile-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .mobile-logo-card {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      padding: 3px;
+      background: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      flex-shrink: 0;
+    }
+
+    .mobile-logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .mobile-brand-text {
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
-      text-align: center;
-      margin-bottom: 2.5rem;
     }
 
-    .mobile-link {
+    .mobile-brand-title {
       font-family: var(--font-display);
-      font-size: 1.75rem;
-      font-weight: 700;
+      font-size: 1.1rem;
+      font-weight: 800;
       color: #ffffff;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+    }
+
+    .mobile-brand-title .accent {
+      color: var(--color-teal);
+    }
+
+    .mobile-brand-subtitle {
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 2px;
+    }
+
+    .mobile-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .mobile-theme-icon-btn {
+      width: 38px;
+      height: 38px;
+    }
+
+    .mobile-close-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
       transition: var(--transition-smooth);
     }
 
-    .mobile-link:hover {
+    .mobile-close-btn:hover {
+      background: rgba(255, 255, 255, 0.18);
+      color: var(--color-teal);
+      transform: scale(1.06);
+    }
+
+    /* Mobile Menu Scrollable Content Body */
+    .mobile-menu-body {
+      flex: 1;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      padding: 1.25rem 1.25rem 2.5rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .mobile-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.45rem 0.95rem;
+      background: rgba(0, 210, 190, 0.08);
+      border: 1px solid rgba(0, 210, 190, 0.25);
+      border-radius: var(--radius-full);
+      font-size: 0.775rem;
+      font-weight: 600;
+      color: #5eead4;
+      align-self: flex-start;
+    }
+
+    .status-pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+      animation: pulseGreen 2s infinite;
+    }
+
+    /* Modern Navigation Grid / List */
+    .mobile-nav-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .mobile-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 0.85rem 1rem;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      text-decoration: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mobile-nav-item:hover,
+    .mobile-nav-item:active {
+      background: rgba(0, 210, 190, 0.09);
+      border-color: rgba(0, 210, 190, 0.35);
+      transform: translateX(4px);
+    }
+
+    .mobile-nav-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .mobile-nav-icon.icon-teal { background: rgba(0, 210, 190, 0.15); color: #00d2be; border: 1px solid rgba(0, 210, 190, 0.3); }
+    .mobile-nav-icon.icon-purple { background: rgba(168, 85, 247, 0.15); color: #a855f7; border: 1px solid rgba(168, 85, 247, 0.3); }
+    .mobile-nav-icon.icon-blue { background: rgba(59, 130, 246, 0.15); color: #3b82f6; border: 1px solid rgba(59, 130, 246, 0.3); }
+    .mobile-nav-icon.icon-emerald { background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .mobile-nav-icon.icon-pink { background: rgba(236, 72, 153, 0.15); color: #ec4899; border: 1px solid rgba(236, 72, 153, 0.3); }
+    .mobile-nav-icon.icon-amber { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3); }
+
+    .mobile-nav-info {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .mobile-nav-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.2;
+    }
+
+    .mobile-nav-desc {
+      font-size: 0.775rem;
+      color: #94a3b8;
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    .mobile-nav-arrow {
+      font-size: 1.15rem;
+      color: #64748b;
+      transition: var(--transition-smooth);
+    }
+
+    .mobile-nav-item:hover .mobile-nav-arrow {
+      color: #00d2be;
+      transform: translateX(3px);
+    }
+
+    /* Mobile Menu Footer */
+    .mobile-menu-footer {
+      margin-top: auto;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .mobile-quote-cta {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.95rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .mobile-quick-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .mobile-quick-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border-radius: 12px;
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+
+    .mobile-quick-btn.btn-wa {
+      background: rgba(37, 211, 102, 0.15);
+      border: 1px solid rgba(37, 211, 102, 0.35);
+      color: #25d366;
+    }
+
+    .mobile-quick-btn.btn-wa:hover {
+      background: #25d366;
+      color: #ffffff;
+    }
+
+    .mobile-quick-btn.btn-call {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+    }
+
+    .mobile-quick-btn.btn-call:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--color-teal);
+    }
+
+    .mobile-contact-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      font-size: 0.75rem;
+      color: #64748b;
+      margin-top: 0.25rem;
+      text-align: center;
+    }
+
+    .mobile-contact-meta a {
+      color: #94a3b8;
+      text-decoration: none;
+    }
+
+    .mobile-contact-meta a:hover {
       color: var(--color-teal);
     }
 
@@ -2882,45 +3214,194 @@
     </div>
   </header>
 
-  <!-- Mobile Drawer Menu -->
+  <!-- ==========================================================================
+       MODERN MOBILE DRAWER MENU
+       ========================================================================== -->
   <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-    <div style="margin-bottom: 2rem; display: flex; justify-content: center;">
-      <div class="brand-logo-white-card" style="width: 70px; height: 70px; padding: 6px; border-radius: 14px;">
-        <img src="images/zova-logo-white-balanced.png" alt="ZovaSites Official Logo" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+    
+    <!-- Top Header Bar -->
+    <div class="mobile-menu-header">
+      <div class="mobile-brand">
+        <div class="brand-logo-white-card mobile-logo-card">
+          <img src="images/zova-logo-white-balanced.png" alt="ZovaSites Logo" class="mobile-logo-img">
+        </div>
+        <div class="mobile-brand-text">
+          <span class="mobile-brand-title">ZOVA<span class="accent">SITES</span></span>
+          <span class="mobile-brand-subtitle">Erode, Tamil Nadu</span>
+        </div>
+      </div>
+
+      <div class="mobile-header-actions">
+        <!-- Theme Mode Toggle inside header -->
+        <button class="theme-mode-toggle mobile-theme-icon-btn" id="mobileDrawerThemeToggle" aria-label="Toggle dark/light mode" title="Toggle theme">
+          <span class="theme-icon-sun">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </span>
+          <span class="theme-icon-moon">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </span>
+        </button>
+
+        <!-- Close Button (X) -->
+        <button class="mobile-close-btn" id="mobileCloseBtn" aria-label="Close mobile menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
       </div>
     </div>
-    <nav class="mobile-links" aria-label="Mobile Navigation">
-      <a href="#home" class="mobile-link">Home</a>
-      <a href="#about" class="mobile-link">About Us</a>
-      <a href="#services" class="mobile-link">Services</a>
-      <a href="#work" class="mobile-link">Our Work</a>
-      <a href="#packages" class="mobile-link">Packages</a>
-      <a href="#contact" class="mobile-link">Contact Us</a>
-    </nav>
-    <div style="text-align: center; margin-top: 1.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.85rem;">
-      <button class="btn btn-outline" id="mobileThemeToggle" style="width: 100%; max-width: 280px; display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; font-size: 0.95rem; padding: 0.75rem 1.5rem;">
-        <span class="theme-icon-sun">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+
+    <!-- Scrollable Content Body -->
+    <div class="mobile-menu-body">
+
+      <!-- Live Availability Status Pill -->
+      <div class="mobile-status-pill">
+        <span class="status-pulse-dot"></span>
+        <span>Available for New Projects • ₹4,999 onwards</span>
+      </div>
+
+      <!-- Modern Navigation Cards -->
+      <nav class="mobile-nav-grid" aria-label="Mobile Navigation">
+        
+        <a href="#home" class="mobile-nav-item">
+          <div class="mobile-nav-icon icon-teal">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+          </div>
+          <div class="mobile-nav-info">
+            <span class="mobile-nav-title">Home</span>
+            <span class="mobile-nav-desc">Welcome &amp; Overview</span>
+          </div>
+          <span class="mobile-nav-arrow">→</span>
+        </a>
+
+        <a href="#about" class="mobile-nav-item">
+          <div class="mobile-nav-icon icon-purple">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+          <div class="mobile-nav-info">
+            <span class="mobile-nav-title">About Us</span>
+            <span class="mobile-nav-desc">Our Story, Team &amp; Stats</span>
+          </div>
+          <span class="mobile-nav-arrow">→</span>
+        </a>
+
+        <a href="#services" class="mobile-nav-item">
+          <div class="mobile-nav-icon icon-blue">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+          </div>
+          <div class="mobile-nav-info">
+            <span class="mobile-nav-title">Services</span>
+            <span class="mobile-nav-desc">Web Development &amp; SEO</span>
+          </div>
+          <span class="mobile-nav-arrow">→</span>
+        </a>
+
+        <a href="#work" class="mobile-nav-item">
+          <div class="mobile-nav-icon icon-emerald">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+          </div>
+          <div class="mobile-nav-info">
+            <span class="mobile-nav-title">Our Work</span>
+            <span class="mobile-nav-desc">Live Client Case Studies</span>
+          </div>
+          <span class="mobile-nav-arrow">→</span>
+        </a>
+
+        <a href="#packages" class="mobile-nav-item">
+          <div class="mobile-nav-icon icon-pink">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="1" x2="12" y2="23"></line>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+          </div>
+          <div class="mobile-nav-info">
+            <span class="mobile-nav-title">Packages</span>
+            <span class="mobile-nav-desc">Transparent Pricing</span>
+          </div>
+          <span class="mobile-nav-arrow">→</span>
+        </a>
+
+        <a href="#contact" class="mobile-nav-item">
+          <div class="mobile-nav-icon icon-amber">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </div>
+          <div class="mobile-nav-info">
+            <span class="mobile-nav-title">Contact Us</span>
+            <span class="mobile-nav-desc">Instant Response within 2 hrs</span>
+          </div>
+          <span class="mobile-nav-arrow">→</span>
+        </a>
+
+      </nav>
+
+      <!-- Bottom CTAs & Quick Connect -->
+      <div class="mobile-menu-footer">
+        
+        <!-- Primary Shiny Button -->
+        <a href="#contact" class="btn btn-primary mobile-quote-cta" id="mobileQuoteBtn">
+          <span>Get a Free Quote</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
           </svg>
-        </span>
-        <span class="theme-icon-moon">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
-        </span>
-        <span class="theme-mode-label">Light Mode</span>
-      </button>
-      <a href="#contact" class="btn btn-primary btn-lg" id="mobileQuoteBtn" style="width: 100%; max-width: 280px;">Get a Free Quote</a>
+        </a>
+
+        <!-- Quick Connect Buttons (WhatsApp + Call) -->
+        <div class="mobile-quick-actions">
+          <a href="https://wa.me/919345943802?text=Hi%20ZovaSites%2C%20I%20want%20to%20build%20a%20website" target="_blank" rel="noopener noreferrer" class="mobile-quick-btn btn-wa">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.979-.276-.1-.476-.15-.676.15-.2.3-.776.979-.951 1.179-.175.2-.351.226-.652.075-.301-.15-1.27-.468-2.42-1.493-.894-.798-1.498-1.784-1.674-2.085-.175-.301-.019-.464.132-.614.136-.135.301-.351.452-.527.15-.175.2-.301.3-.501.101-.2.05-.376-.025-.526-.075-.15-.676-1.63-.926-2.23-.244-.585-.492-.506-.676-.515-.175-.009-.376-.009-.576-.009s-.526.075-.802.376c-.276.301-1.052 1.028-1.052 2.508 0 1.48 1.077 2.908 1.228 3.109.15.2 2.12 3.238 5.136 4.54 3.016 1.302 3.016.868 3.567.818.552-.05 1.78-.727 2.031-1.429.251-.702.251-1.303.176-1.429-.076-.126-.276-.201-.577-.351zM12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.98-1.405C8.423 21.49 10.153 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+            </svg>
+            <span>WhatsApp</span>
+          </a>
+
+          <a href="tel:+919842173232" class="mobile-quick-btn btn-call">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            <span>Call Us</span>
+          </a>
+        </div>
+
+        <div class="mobile-contact-meta">
+          <span>📍 Erode, Tamil Nadu, India</span>
+          <span>•</span>
+          <a href="mailto:zovasites@gmail.com">zovasites@gmail.com</a>
+        </div>
+
+      </div>
+
     </div>
+
   </div>
 
   <main>
@@ -4117,12 +4598,11 @@
         updateThemeUI('dark');
       }
 
-      if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', toggleThemeMode);
-      }
-      if (mobileThemeToggleBtn) {
-        mobileThemeToggleBtn.addEventListener('click', toggleThemeMode);
-      }
+      // Bind all theme mode toggle buttons
+      const allThemeToggles = document.querySelectorAll('.theme-mode-toggle, #themeModeToggle, #mobileThemeToggle, #mobileDrawerThemeToggle');
+      allThemeToggles.forEach(btn => {
+        btn.addEventListener('click', toggleThemeMode);
+      });
 
       // 1. Sticky Navbar on Scroll
       const navbar = document.getElementById('navbar');
@@ -4150,33 +4630,39 @@
         });
       });
 
-      // 3. Mobile Navigation Menu Drawer Toggle
+      // 3. Modern Mobile Navigation Menu Drawer Toggle
       const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileCloseBtn = document.getElementById('mobileCloseBtn');
       const mobileMenu = document.getElementById('mobileMenu');
-      const mobileLinks = document.querySelectorAll('.mobile-link, #mobileQuoteBtn');
+      const mobileNavLinks = document.querySelectorAll('.mobile-link, .mobile-nav-item, #mobileQuoteBtn, .mobile-quick-btn');
 
       function toggleMobileMenu() {
         const isOpen = mobileMenu.classList.contains('open');
         if (isOpen) {
           mobileMenu.classList.remove('open');
-          mobileMenuBtn.classList.remove('active');
-          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+          if (mobileMenuBtn) {
+            mobileMenuBtn.classList.remove('active');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+          }
           mobileMenu.setAttribute('aria-hidden', 'true');
           document.body.style.overflow = '';
         } else {
           mobileMenu.classList.add('open');
-          mobileMenuBtn.classList.add('active');
-          mobileMenuBtn.setAttribute('aria-expanded', 'true');
+          if (mobileMenuBtn) {
+            mobileMenuBtn.classList.add('active');
+            mobileMenuBtn.setAttribute('aria-expanded', 'true');
+          }
           mobileMenu.setAttribute('aria-hidden', 'false');
           document.body.style.overflow = 'hidden';
         }
       }
 
-      mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+      if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+      if (mobileCloseBtn) mobileCloseBtn.addEventListener('click', toggleMobileMenu);
 
-      mobileLinks.forEach(link => {
+      mobileNavLinks.forEach(link => {
         link.addEventListener('click', () => {
-          if (mobileMenu.classList.contains('open')) {
+          if (mobileMenu && mobileMenu.classList.contains('open')) {
             toggleMobileMenu();
           }
         });
